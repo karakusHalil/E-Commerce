@@ -4,6 +4,7 @@ import Footer from "./components/layout/footer/Footer";
 import Header from "./components/layout/header/Header";
 import Policy from "./components/layout/policy/Policy";
 import AccountPage from "./pages/AccountPage";
+import CardPage from "./pages/CardPage";
 import HomePage from "./pages/HomePage";
 import SingleBlogPage from "./pages/SingleBlogPage";
 
@@ -11,7 +12,8 @@ function App() {
   return (
     <>
       <Header />
-      <AccountPage />
+      <CardPage />
+      {/* <AccountPage /> */}
       {/* <SingleBlogPage /> */}
       {/* <HomePage /> */}
       <Brands />
