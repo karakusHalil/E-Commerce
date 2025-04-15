@@ -5,6 +5,7 @@ import Header from "./components/layout/header/Header";
 import Policy from "./components/layout/policy/Policy";
 import AccountPage from "./pages/AccountPage";
 import CardPage from "./pages/CardPage";
+import ContactPage from "./pages/ContactPage";
 import HomePage from "./pages/HomePage";
 import SingleBlogPage from "./pages/SingleBlogPage";
 
@@ -12,7 +13,8 @@ function App() {
   return (
     <>
       <Header />
-      <CardPage />
+      <ContactPage />
+      {/* <CardPage /> */}
       {/* <AccountPage /> */}
       {/* <SingleBlogPage /> */}
       {/* <HomePage /> */}
