@@ -7,13 +7,15 @@ import AccountPage from "./pages/AccountPage";
 import CardPage from "./pages/CardPage";
 import ContactPage from "./pages/ContactPage";
 import HomePage from "./pages/HomePage";
+import ShopPage from "./pages/ShopPage";
 import SingleBlogPage from "./pages/SingleBlogPage";
 
 function App() {
   return (
     <>
       <Header />
-      <ContactPage />
+      <ShopPage />
+      {/* <ContactPage /> */}
       {/* <CardPage /> */}
       {/* <AccountPage /> */}
       {/* <SingleBlogPage /> */}
