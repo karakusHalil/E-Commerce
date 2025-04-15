@@ -1,3 +1,4 @@
+import Brands from "./components/layout/brands/Brands";
 import CampaingSingle from "./components/layout/campaing/CampaingSingle";
 import Footer from "./components/layout/footer/Footer";
 import Header from "./components/layout/header/Header";
@@ -8,6 +9,7 @@ function App() {
     <>
       <Header />
       <h1>E-Commerce</h1>
+      <Brands />
       <CampaingSingle />
       <Policy />
       <Footer />
