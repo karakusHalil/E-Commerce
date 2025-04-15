@@ -3,6 +3,7 @@ import CampaingSingle from "./components/layout/campaing/CampaingSingle";
 import Footer from "./components/layout/footer/Footer";
 import Header from "./components/layout/header/Header";
 import Policy from "./components/layout/policy/Policy";
+import AccountPage from "./pages/AccountPage";
 import HomePage from "./pages/HomePage";
 import SingleBlogPage from "./pages/SingleBlogPage";
 
@@ -10,7 +11,8 @@ function App() {
   return (
     <>
       <Header />
-      <SingleBlogPage />
+      <AccountPage />
+      {/* <SingleBlogPage /> */}
       {/* <HomePage /> */}
       <Brands />
       <CampaingSingle />
