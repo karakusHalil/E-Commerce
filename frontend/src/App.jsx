@@ -9,12 +9,14 @@ import ContactPage from "./pages/ContactPage";
 import HomePage from "./pages/HomePage";
 import ShopPage from "./pages/ShopPage";
 import SingleBlogPage from "./pages/SingleBlogPage";
+import SingleProductPage from "./pages/SingleProductPage";
 
 function App() {
   return (
     <>
       <Header />
-      <ShopPage />
+      <SingleProductPage />
+      {/* <ShopPage /> */}
       {/* <ContactPage /> */}
       {/* <CardPage /> */}
       {/* <AccountPage /> */}
