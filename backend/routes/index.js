@@ -10,3 +10,5 @@ const productRoute = require("./products");
 
 router.use("/categories", categoryRoute);
 router.use("/products", productRoute);
+
+module.exports = router;
