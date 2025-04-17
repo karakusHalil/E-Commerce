@@ -4,7 +4,13 @@ const router = express.Router();
 
 //Tüm kategorileri getir GetAll()
 router.get("/", async (req, res) => {
-  res.send("Category List");
+  try {
+    const categories = await Category.find();
+
+    res.status(200).json(categories);
+  } catch (error) {
+    res.status(500).json({ error: "Sunucu Hatası !" });
+  }
 });
 
 //Yeni Kategori Ekleme
