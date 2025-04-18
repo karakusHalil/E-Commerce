@@ -43,4 +43,26 @@ router.post("/", async (req, res) => {
   }
 });
 
+//Kategori Güncelleme
+router.put("/:categoryId", async (req, res) => {
+  try {
+    const categoryId = req.params.categoryId;
+    const updateInfo = req.body;
+
+    //Kategori bulunamazsa hata döndürmek için değişken tanımlıyoruz
+    const category = await Category.findById(categoryId);
+    if (!category) {
+      return res.status(404).json({ error: "Kategori Bulunamadı !" });
+    }
+    const updatedCategory = await Category.findByIdAndUpdate(
+      categoryId,
+      updateInfo,
+      { new: true }
+    );
+    res.status(200).json(updatedCategory);
+  } catch (error) {
+    res.status(500).json({ error: "Sunucu hatası !" });
+  }
+});
+
 module.exports = router;
