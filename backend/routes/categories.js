@@ -65,4 +65,20 @@ router.put("/:categoryId", async (req, res) => {
   }
 });
 
+//Kategori Silme
+
+router.delete("/:categoryId", async (req, res) => {
+  try {
+    const categoryId = req.params.categoryId;
+    const deletedCategory = await Category.findByIdAndDelete(categoryId);
+
+    if (!deletedCategory) {
+      return res.status(404).json({ error: "Kategori Bulunamadı !" });
+    }
+    res.status(200).json(deletedCategory);
+  } catch (error) {
+    res.status(500).json({ error: "Sunucu Hatası !" });
+  }
+});
+
 module.exports = router;
