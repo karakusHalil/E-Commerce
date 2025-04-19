@@ -1,11 +1,14 @@
 const express = require("express");
 const router = express.Router();
+const bycrypt = require("bcrypt");
 const User = require("../models/User");
 
 //DENEME GET
 router.get("/register", async (req, res) => {
   res.send("Auth Register");
 });
+
+//
 
 //Kullanıcı kayıt (REGISTER)
 router.post("/register", async (req, res) => {
@@ -18,7 +21,14 @@ router.post("/register", async (req, res) => {
         .status(400)
         .json({ error: "Bu email adresi daha önce kullanılmıştır !" });
     }
-    const newUser = await new User({ username, email, password });
+
+    const hashPassword = await bycrypt.hash(password, 10);
+
+    const newUser = await new User({
+      username,
+      email,
+      password: hashPassword,
+    });
     await newUser.save();
 
     res.status(201).json(newUser);
