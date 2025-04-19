@@ -12,6 +12,22 @@ router.get("/", async (req, res) => {
   }
 });
 
+//Id'ye göre kullanıcı getir
+
+router.get("/:userId", async (req, res) => {
+  try {
+    const userId = req.params.userId;
+    const user = await User.findById(userId);
+
+    if (!user) {
+      return res.status(404).json({ error: "Kullanıcı Bulunamadı !" });
+    }
+    res.status(200).json(user);
+  } catch (error) {
+    res.status(500).json({ error: "Sunucu Hatası !" });
+  }
+});
+
 //Yeni kullanıcı ekleme
 
 router.post("/", async (req, res) => {
