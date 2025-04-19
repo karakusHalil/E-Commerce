@@ -1,4 +1,4 @@
-const SingleBlogPage = () => {
+const BlogsPage = () => {
   return (
     <>
       <section className="blogs blog-page">
@@ -111,4 +111,4 @@ const SingleBlogPage = () => {
   );
 };
 
-export default SingleBlogPage;
+export default BlogsPage;

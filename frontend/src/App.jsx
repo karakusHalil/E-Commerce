@@ -8,19 +8,19 @@ import CardPage from "./pages/CardPage";
 import ContactPage from "./pages/ContactPage";
 import HomePage from "./pages/HomePage";
 import ShopPage from "./pages/ShopPage";
-import SingleBlogPage from "./pages/SingleBlogPage";
+import BlogsPage from "./pages/BlogsPage";
 import SingleProductPage from "./pages/SingleProductPage";
 
 function App() {
   return (
     <>
       <Header />
-      <SingleProductPage />
+      {/* <SingleProductPage /> */}
       {/* <ShopPage /> */}
       {/* <ContactPage /> */}
       {/* <CardPage /> */}
       {/* <AccountPage /> */}
-      {/* <SingleBlogPage /> */}
+      <BlogsPage />
       {/* <HomePage /> */}
       <Brands />
       <CampaingSingle />
