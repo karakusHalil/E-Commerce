@@ -1,4 +1,5 @@
-import Categories from "../components/category/Categories";
+import Categories from "../components/categories/Categories";
+import Products from "../components/products/Products";
 import Slider from "../components/slider/Slider";
 
 const HomePage = () => {
@@ -7,33 +8,7 @@ const HomePage = () => {
       <div>
         <Slider />
         <Categories />
-        <section className="products">
-          <div className="container">
-            <div className="section-title">
-              <h2>Featured Products</h2>
-              <p>Summer Collection New Morden Design</p>
-            </div>
-            <div className="product-wrapper product-carousel">
-              <div className="glide__track" data-glide-el="track">
-                <ul className="product-list glide__slides" id="product-list" />
-              </div>
-              <div className="glide__arrows" data-glide-el="controls">
-                <button
-                  className="glide__arrow glide__arrow--left"
-                  data-glide-dir="<"
-                >
-                  <i className="bi bi-chevron-left" />
-                </button>
-                <button
-                  className="glide__arrow glide__arrow--right"
-                  data-glide-dir=">"
-                >
-                  <i className="bi bi-chevron-right" />
-                </button>
-              </div>
-            </div>
-          </div>
-        </section>
+        <Products />
         <section className="campaigns">
           <div className="container">
             <div className="campaigns-wrapper">
