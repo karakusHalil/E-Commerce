@@ -10,6 +10,7 @@ import HomePage from "./pages/HomePage";
 import ShopPage from "./pages/ShopPage";
 import BlogsPage from "./pages/BlogsPage";
 import SingleProductPage from "./pages/SingleProductPage";
+import SingleBlogPage from "./pages/SingleBlogPage";
 
 function App() {
   return (
@@ -20,8 +21,9 @@ function App() {
       {/* <ContactPage /> */}
       {/* <CardPage /> */}
       {/* <AccountPage /> */}
-      <BlogsPage />
+      {/* <BlogsPage /> */}
       {/* <HomePage /> */}
+      <SingleBlogPage />
       <Brands />
       <CampaingSingle />
       <Policy />
