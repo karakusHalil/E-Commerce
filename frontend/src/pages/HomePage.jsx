@@ -1,3 +1,4 @@
+import Campaings from "../components/campaings/Campaings";
 import Categories from "../components/categories/Categories";
 import Products from "../components/products/Products";
 import Slider from "../components/slider/Slider";
@@ -9,70 +10,7 @@ const HomePage = () => {
         <Slider />
         <Categories />
         <Products />
-        <section className="campaigns">
-          <div className="container">
-            <div className="campaigns-wrapper">
-              <div className="campaign-item">
-                <h3 className="campaign-title">
-                  Fashion Month <br />
-                  Ready in Capital <br />
-                  Shop
-                </h3>
-                <p className="campaign-desc">
-                  Lorem ipsum dolor sit amet consectetur adipiscing elit dolor
-                </p>
-                <a href="#" className="btn btn-primary">
-                  View All
-                  <i className="bi bi-arrow-right" />
-                </a>
-              </div>
-              <div className="campaign-item">
-                <h3 className="campaign-title">
-                  Fashion Month <br />
-                  Ready in Capital <br />
-                  Shop
-                </h3>
-                <p className="campaign-desc">
-                  Lorem ipsum dolor sit amet consectetur adipiscing elit dolor
-                </p>
-                <a href="#" className="btn btn-primary">
-                  View All
-                  <i className="bi bi-arrow-right" />
-                </a>
-              </div>
-            </div>
-            <div className="campaigns-wrapper">
-              <div className="campaign-item">
-                <h3 className="campaign-title">
-                  Fashion Month <br />
-                  Ready in Capital <br />
-                  Shop
-                </h3>
-                <p className="campaign-desc">
-                  Lorem ipsum dolor sit amet consectetur adipiscing elit dolor
-                </p>
-                <a href="#" className="btn btn-primary">
-                  View All
-                  <i className="bi bi-arrow-right" />
-                </a>
-              </div>
-              <div className="campaign-item">
-                <h3 className="campaign-title">
-                  Fashion Month <br />
-                  Ready in Capital <br />
-                  Shop
-                </h3>
-                <p className="campaign-desc">
-                  Lorem ipsum dolor sit amet consectetur adipiscing elit dolor
-                </p>
-                <a href="#" className="btn btn-primary">
-                  View All
-                  <i className="bi bi-arrow-right" />
-                </a>
-              </div>
-            </div>
-          </div>
-        </section>
+        <Campaings />
         <section className="products">
           <div className="container">
             <div className="section-title">
