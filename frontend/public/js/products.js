@@ -1,11 +1,5 @@
 import { product1 } from "./glide.js";
 
-if (typeof Glide !== "undefined") {
-  console.log("Glide.js yüklü ve çalışıyor!");
-} else {
-  console.log("Glide.js yüklü değil.");
-}
-
 let cart = localStorage.getItem("cart")
   ? JSON.parse(localStorage.getItem("cart"))
   : [];
