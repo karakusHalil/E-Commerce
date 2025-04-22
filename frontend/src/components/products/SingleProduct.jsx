@@ -1,24 +1,11 @@
+import ProductTopbar from "./singleProduct/ProductTopbar";
+
 function SingleProduct() {
   return (
     <>
       <div className="single-product-wrapper">
         {/* breadcrumb start */}
-        <div className="single-topbar">
-          <nav className="breadcrumb">
-            <ul>
-              <li>
-                <a href="#">Home</a>
-              </li>
-              <li>
-                <a href="#">Man</a>
-              </li>
-              <li>
-                <a href="#">Pants</a>
-              </li>
-              <li>Basic Colored Sweatpants With Elastic Hems</li>
-            </ul>
-          </nav>
-        </div>
+        <ProductTopbar />
         {/* breadcrumb end */}
         {/* site main start */}
         <div className="single-content">
