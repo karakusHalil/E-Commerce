@@ -18,14 +18,13 @@ function App() {
       <Header />
       {/* <SingleProductPage /> */}
       {/* <ShopPage /> */}
-      <ContactPage />
+      {/* <ContactPage /> */}
       {/* <CardPage /> */}
       {/* <AccountPage /> */}
       {/* <BlogsPage /> */}
       {/* <HomePage /> */}
-      {/* <SingleBlogPage /> */}
+      <SingleBlogPage />
       <Brands />
-      <CampaingSingle />
       <Policy />
       <Footer />
     </>
