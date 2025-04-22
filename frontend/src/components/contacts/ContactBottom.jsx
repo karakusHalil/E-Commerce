@@ -1,3 +1,4 @@
+import ContactElement from "./ContactElement";
 import ContactTitle from "./ContactTitle";
 
 function ContactBottom() {
@@ -6,69 +7,7 @@ function ContactBottom() {
       <div className="contact-bottom">
         <div className="container">
           <ContactTitle />
-          <div className="contact-elements">
-            <form className="contact-form">
-              <div className>
-                <label>
-                  Your Name
-                  <span>*</span>
-                </label>
-                <input type="text" required />
-              </div>
-              <div className>
-                <label>
-                  Your email
-                  <span>*</span>
-                </label>
-                <input type="text" required />
-              </div>
-              <div className>
-                <label>
-                  Subject
-                  <span>*</span>
-                </label>
-                <input type="text" required />
-              </div>
-              <div className>
-                <label>
-                  Your message
-                  <span>*</span>
-                </label>
-                <textarea
-                  id="author"
-                  name="author"
-                  type="text"
-                  value
-                  size={30}
-                  required
-                  defaultValue={""}
-                />
-              </div>
-              <button className="btn btn-sm form-button">Send Message</button>
-            </form>
-            <div className="contact-info">
-              <div className="contact-info-item">
-                <div className="contact-info-texts">
-                  <strong> Clotya Store</strong>
-                  <p className="contact-street">
-                    Clotya Store Germany — 785 15h Street, Office 478/B Green
-                    Mall Berlin, De 81566
-                  </p>
-                  <a href="tel:Phone: +1 1234 567 88">Phone: +1 1234 567 88</a>
-                  <a href="mailto:Email: contact@example.com">
-                    Email: contact@example.com
-                  </a>
-                </div>
-              </div>
-              <div className="contact-info-item">
-                <div className="contact-info-texts">
-                  <strong> Opening Hours</strong>
-                  <p className="contact-date">Monday - Friday : 9am - 5pm</p>
-                  <p>Weekend Closed</p>
-                </div>
-              </div>
-            </div>
-          </div>
+          <ContactElement />
         </div>
       </div>
     </>
