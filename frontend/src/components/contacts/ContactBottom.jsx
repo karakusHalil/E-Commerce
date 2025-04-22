@@ -1,18 +1,11 @@
+import ContactTitle from "./ContactTitle";
+
 function ContactBottom() {
   return (
     <>
       <div className="contact-bottom">
         <div className="container">
-          <div className="contact-titles">
-            <h4>Contact with us</h4>
-            <h2>Get In Touch</h2>
-            <p>
-              In hac habitasse platea dictumst. Pellentesque viverra sem nec
-              orci lacinia, in bibendum urna mollis. Quisque nunc lacus, varius
-              vel leo a, pretium lobortis metus. Vivamus consectetur consequat
-              justo.
-            </p>
-          </div>
+          <ContactTitle />
           <div className="contact-elements">
             <form className="contact-form">
               <div className>
