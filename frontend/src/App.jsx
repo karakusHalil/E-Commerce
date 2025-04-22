@@ -22,7 +22,7 @@ function App() {
       {/* <CardPage /> */}
       {/* <AccountPage /> */}
       {/* <BlogsPage /> */}
-      <HomePage />
+      {/* <HomePage /> */}
       {/* <SingleBlogPage /> */}
       <Brands />
       <CampaingSingle />
