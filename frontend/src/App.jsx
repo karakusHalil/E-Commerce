@@ -20,7 +20,7 @@ function App() {
       {/* <ShopPage /> */}
       {/* <ContactPage /> */}
       {/* <CardPage /> */}
-      {/* <AccountPage /> */}
+      <AccountPage />
       {/* <BlogsPage /> */}
       {/* <HomePage /> */}
       {/* <SingleBlogPage /> */}
