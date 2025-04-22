@@ -15,7 +15,6 @@ import SingleBlogPage from "./pages/SingleBlogPage";
 function App() {
   return (
     <>
-      <Header />
       <SingleProductPage />
       {/* <ShopPage /> */}
       {/* <ContactPage /> */}
@@ -26,7 +25,6 @@ function App() {
       {/* <SingleBlogPage /> */}
       <Brands />
       <Policy />
-      <Footer />
     </>
   );
 }
