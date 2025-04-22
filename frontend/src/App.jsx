@@ -16,14 +16,14 @@ function App() {
   return (
     <>
       <Header />
-      {/* <SingleProductPage /> */}
+      <SingleProductPage />
       {/* <ShopPage /> */}
       {/* <ContactPage /> */}
       {/* <CardPage /> */}
       {/* <AccountPage /> */}
       {/* <BlogsPage /> */}
       {/* <HomePage /> */}
-      <SingleBlogPage />
+      {/* <SingleBlogPage /> */}
       <Brands />
       <Policy />
       <Footer />
