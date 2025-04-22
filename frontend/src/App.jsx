@@ -18,8 +18,8 @@ function App() {
       <Header />
       {/* <SingleProductPage /> */}
       {/* <ShopPage /> */}
-      {/* <ContactPage /> */}
-      <CardPage />
+      <ContactPage />
+      {/* <CardPage /> */}
       {/* <AccountPage /> */}
       {/* <BlogsPage /> */}
       {/* <HomePage /> */}
