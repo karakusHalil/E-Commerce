@@ -19,9 +19,9 @@ function App() {
       {/* <SingleProductPage /> */}
       {/* <ShopPage /> */}
       {/* <ContactPage /> */}
-      {/* <CardPage /> */}
+      <CardPage />
       {/* <AccountPage /> */}
-      <BlogsPage />
+      {/* <BlogsPage /> */}
       {/* <HomePage /> */}
       {/* <SingleBlogPage /> */}
       <Brands />
