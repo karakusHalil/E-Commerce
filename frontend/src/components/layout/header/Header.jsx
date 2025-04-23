@@ -1,4 +1,4 @@
-import React from "react";
+import PropTypes from "prop-types";
 
 const Header = ({ setIsSearchShow }) => {
   return (
@@ -216,3 +216,7 @@ const Header = ({ setIsSearchShow }) => {
 };
 
 export default Header;
+
+Header.PropTypes = {
+  setIsSearchShow: PropTypes.func,
+};

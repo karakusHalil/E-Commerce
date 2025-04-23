@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 function Search({ isSearchShow, setIsSearchShow }) {
   return (
     <>
@@ -50,9 +52,18 @@ function Search({ isSearchShow, setIsSearchShow }) {
             onClick={() => setIsSearchShow(false)}
           />
         </div>
+        <div
+          className="modal-overlay"
+          onClick={() => setIsSearchShow(false)}
+        ></div>
       </div>
     </>
   );
 }
 
 export default Search;
+
+Search.propTypes = {
+  isSearchShow: PropTypes.bool,
+  setIsSearchShow: PropTypes.func,
+};
