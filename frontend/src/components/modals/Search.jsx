@@ -1,7 +1,7 @@
-function Search() {
+function Search({ isSearchShow, setIsSearchShow }) {
   return (
     <>
-      <div className="modal-search">
+      <div className={`modal-search ${isSearchShow ? "show" : " "}`}>
         <div className="modal-wrapper">
           <h3 className="modal-title">Search for products</h3>
           <p className="modal-text">
@@ -44,7 +44,11 @@ function Search() {
               </a>
             </div>
           </div>
-          <i className="bi bi-x-circle" id="close-search" />
+          <i
+            className="bi bi-x-circle"
+            id="close-search"
+            onClick={() => setIsSearchShow(false)}
+          />
         </div>
       </div>
     </>

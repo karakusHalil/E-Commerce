@@ -1,8 +1,6 @@
 import React from "react";
-import Search from "../../modals/Search";
-import Dialog from "../../modals/Dialog";
 
-const Header = () => {
+const Header = ({ setIsSearchShow }) => {
   return (
     <>
       <header>
@@ -192,7 +190,10 @@ const Header = () => {
                   <a href="account.html" className="header-account">
                     <i className="bi bi-person" />
                   </a>
-                  <button className="search-button">
+                  <button
+                    className="search-button"
+                    onClick={() => setIsSearchShow(true)}
+                  >
                     <i className="bi bi-search" />
                   </button>
                   <a href="#">
