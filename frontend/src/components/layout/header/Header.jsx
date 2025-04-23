@@ -210,11 +210,6 @@ const Header = () => {
           </div>
         </div>
       </header>
-
-      <div>
-        <Search />
-        <Dialog />
-      </div>
     </>
   );
 };
