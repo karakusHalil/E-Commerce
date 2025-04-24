@@ -63,4 +63,18 @@ router.put("/:productId", async (req, res) => {
   }
 });
 
+//Id ye göre ürün Silme işlemi
+router.delete("/:productId", async (req, res) => {
+  try {
+    const productId = req.params.productId;
+    const deletedProduct = await Product.findByIdAndDelete(productId);
+    if (!deletedProduct) {
+      return res.status(404).json({ error: "Ürün Bulunamadı !" });
+    }
+    res.status(200).json(deletedProduct);
+  } catch (error) {
+    res.status(500).json({ error: "Sunucu Hatası !" });
+  }
+});
+
 module.exports = router;
