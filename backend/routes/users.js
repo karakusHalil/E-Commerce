@@ -41,4 +41,40 @@ router.post("/", async (req, res) => {
   }
 });
 
+//Kullanıcı Güncelleme
+
+router.put("/:userId", async (req, res) => {
+  try {
+    const userId = req.params.userId;
+    const updateInfo = req.body;
+
+    //Kullanıcı bulunmazsa hata döndürme
+    const user = await User.findById(userId);
+    if (!user) {
+      return res.status(404).json({ error: "Kullanıcı Bulunamadı !" });
+    }
+    const updatedUser = await User.findByIdAndUpdate(userId, updateInfo, {
+      new: true,
+    });
+    res.status(200).json(updatedUser);
+  } catch (error) {
+    res.status(500).json({ error: "Sunucu Hatası !" });
+  }
+});
+
+// Kullanıcı Silme İşlemi
+
+router.delete("/:userId", async (req, res) => {
+  try {
+    const userId = req.params.userId;
+    const deletedUser = await User.findByIdAndDelete(userId);
+    if (!deletedUser) {
+      return res.status(404).json({ error: "Kullanıcı bulunamadı !" });
+    }
+    res.status(200).json(deletedUser);
+  } catch (error) {
+    res.status(500).json({ error: "Sunucu Hatası !" });
+  }
+});
+
 module.exports = router;
