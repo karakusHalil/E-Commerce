@@ -1,9 +1,10 @@
+import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import Header from "../components/layout/header/Header";
+import Policy from "../components/layout/policy/Policy";
 import Footer from "../components/layout/footer/Footer";
 import Search from "../components/modals/Search";
 import Dialog from "../components/modals/Dialog";
-import { useEffect, useState } from "react";
 
 function SiteLayout({ children }) {
   const [isSearchShow, setIsSearchShow] = useState(false);
@@ -31,6 +32,7 @@ function SiteLayout({ children }) {
         <Dialog isDialogShow={isDialogShow} handleClosed={handleClosed} />
         <Header setIsSearchShow={setIsSearchShow} />
         {children}
+        <Policy />
         <Footer />
       </div>
     </>

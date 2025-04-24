@@ -1,6 +1,7 @@
 function UserComment() {
   return (
     <>
+      <h3>2 reviews for Basic Colored Sweatpants With Elastic Hems</h3>
       <div className="comments">
         <ol className="comment-list">
           <li className="comment-item">
