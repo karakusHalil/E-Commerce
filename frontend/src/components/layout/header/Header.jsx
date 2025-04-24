@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import { Link, NavLink } from "react-router-dom";
 
 const Header = ({ setIsSearchShow }) => {
   return (
@@ -20,18 +21,18 @@ const Header = ({ setIsSearchShow }) => {
                 <i className="bi bi-list" id="btn-menu" />
               </div>
               <div className="header-left">
-                <a href="index.html" className="logo">
+                <Link to="/" className="logo">
                   LOGO
-                </a>
+                </Link>
               </div>
               <div className="header-center" id="sidebar">
                 <nav className="navigation">
                   <ul className="menu-list">
                     <li className="menu-list-item">
-                      <a href="index.html" className="menu-link active">
-                        Home
+                      <NavLink to="/" className="menu-link">
+                        Ana Sayfa
                         <i className="bi bi-chevron-down" />
-                      </a>
+                      </NavLink>
                       <div className="menu-dropdown-wrapper">
                         <ul className="menu-dropdown-content">
                           <li>
@@ -65,10 +66,10 @@ const Header = ({ setIsSearchShow }) => {
                       </div>
                     </li>
                     <li className="menu-list-item megamenu-wrapper">
-                      <a href="shop.html" className="menu-link">
-                        Shop
+                      <NavLink to="/shop" className="menu-link">
+                        Mağaza
                         <i className="bi bi-chevron-down" />
-                      </a>
+                      </NavLink>
                       <div className="menu-dropdown-wrapper">
                         <div className="menu-dropdown-megamenu">
                           <div className="megamenu-links">
@@ -172,14 +173,14 @@ const Header = ({ setIsSearchShow }) => {
                       </div>
                     </li>
                     <li className="menu-list-item">
-                      <a href="blog.html" className="menu-link">
+                      <NavLink to="/blog" className="menu-link">
                         Blog
-                      </a>
+                      </NavLink>
                     </li>
                     <li className="menu-list-item">
-                      <a href="contact.html" className="menu-link">
-                        Contact
-                      </a>
+                      <NavLink to="/contact" className="menu-link">
+                        İLETİŞİM
+                      </NavLink>
                     </li>
                   </ul>
                 </nav>
@@ -187,9 +188,9 @@ const Header = ({ setIsSearchShow }) => {
               </div>
               <div className="header-right">
                 <div className="header-right-links">
-                  <a href="account.html" className="header-account">
+                  <Link to="/account" className="header-account">
                     <i className="bi bi-person" />
-                  </a>
+                  </Link>
                   <button
                     className="search-button"
                     onClick={() => setIsSearchShow(true)}
@@ -200,10 +201,10 @@ const Header = ({ setIsSearchShow }) => {
                     <i className="bi bi-heart" />
                   </a>
                   <div className="header-cart">
-                    <a href="cart.html" className="header-cart-link">
+                    <Link to="/card" className="header-cart-link">
                       <i className="bi bi-bag" />
                       <span className="header-cart-count">0</span>
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>
