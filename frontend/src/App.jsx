@@ -7,10 +7,12 @@ import CardPage from "./pages/CardPage";
 import AccountPage from "./pages/AccountPage";
 import SingleProductPage from "./pages/SingleProductPage";
 import SingleBlogPage from "./pages/SingleBlogPage";
+import ScrollToTop from "./components/scrollToTop/ScrollToTop";
 
 function App() {
   return (
     <>
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/shop" element={<ShopPage />} />

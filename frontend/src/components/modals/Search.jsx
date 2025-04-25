@@ -24,7 +24,7 @@ function Search({ isSearchShow, setIsSearchShow }) {
                 <img
                   src="img/products/product1/1.png"
                   className="search-thumb"
-                  alt
+                  alt=""
                 />
                 <div className="search-info">
                   <h4>Analogue Resin Strap</h4>
