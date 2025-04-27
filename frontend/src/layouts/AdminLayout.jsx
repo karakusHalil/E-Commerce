@@ -4,6 +4,10 @@ import {
   AppstoreOutlined,
   ShoppingOutlined,
   DashboardOutlined,
+  AppstoreAddOutlined,
+  OrderedListOutlined,
+  MinusOutlined,
+  PlusOutlined,
   UserOutlined,
   TagsOutlined,
 } from "@ant-design/icons";
@@ -26,18 +30,52 @@ function AdminLayout() {
       icon: <AppstoreOutlined />,
       label: "Category",
       path: "/admin/category",
-      onClick: () => {
-        navigate("/admin/category");
-      },
+      children: [
+        {
+          key: "2-1",
+          icon: <OrderedListOutlined />,
+          label: "Category List",
+          path: "/admin/categories/list",
+          onClick: () => {
+            navigate("/admin/categories/list");
+          },
+        },
+        {
+          key: "2-2",
+          icon: <PlusOutlined />,
+          label: "Category Add",
+          path: "/admin/categories/creat",
+          onClick: () => {
+            navigate("/admin/categories/create");
+          },
+        },
+      ],
     },
     {
       key: "3",
       icon: <ShoppingOutlined />,
       label: "Product",
       path: "/admin/product",
-      onClick: () => {
-        navigate("/admin/product");
-      },
+      children: [
+        {
+          key: "3-1",
+          icon: <OrderedListOutlined />,
+          label: "Product List",
+          path: "/admin/products/list",
+          onClick: () => {
+            navigate("/admin/products/list");
+          },
+        },
+        {
+          key: "3-2",
+          icon: <PlusOutlined />,
+          label: "Product Add",
+          path: "/admin/products/creat",
+          onClick: () => {
+            navigate("/admin/products/create");
+          },
+        },
+      ],
     },
     {
       key: "4",
