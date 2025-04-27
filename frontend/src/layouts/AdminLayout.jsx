@@ -82,18 +82,52 @@ function AdminLayout() {
       icon: <UserOutlined />,
       label: "User",
       path: "/admin/user",
-      onClick: () => {
-        navigate("/admin/user");
-      },
+      children: [
+        {
+          key: "4-1",
+          icon: <OrderedListOutlined />,
+          label: "User List",
+          path: "/admin/users/list",
+          onClick: () => {
+            navigate("/admin/users/list");
+          },
+        },
+        {
+          key: "4-2",
+          icon: <PlusOutlined />,
+          label: "User Add",
+          path: "/admin/users/create",
+          onClick: () => {
+            navigate("/admin/users/create");
+          },
+        },
+      ],
     },
     {
       key: "5",
       icon: <TagsOutlined />,
       label: "Coupon",
       path: "/admin/coupon",
-      onClick: () => {
-        navigate("/admin/coupon");
-      },
+      children: [
+        {
+          key: "5-1",
+          icon: <OrderedListOutlined />,
+          label: "Coupon List",
+          path: "/admin/coupons/list",
+          onClick: () => {
+            navigate("/admin/coupons/list");
+          },
+        },
+        {
+          key: "5-2",
+          icon: <PlusOutlined />,
+          label: "Coupon Add",
+          path: "/admin/coupons/create",
+          onClick: () => {
+            navigate("/admin/coupons/create");
+          },
+        },
+      ],
     },
   ];
   return (
