@@ -26,6 +26,13 @@ function Register() {
       if (response.ok) {
         const result = await response.json();
         console.log(result);
+
+        //form temizleme
+        setFormData({
+          username: "",
+          email: "",
+          password: "",
+        });
       } else {
         console.log("Kullanıcı kayıt işlemi sırasında hata oluştu...");
       }
@@ -46,8 +53,9 @@ function Register() {
               <input
                 type="text"
                 name="username"
+                value={formData.username}
                 onChange={handleInputChange}
-                autocomplete="username"
+                autoComplete="username"
                 required
               />
             </label>
@@ -60,8 +68,9 @@ function Register() {
               <input
                 type="email"
                 name="email"
+                value={formData.email}
                 onChange={handleInputChange}
-                autocomplete="email"
+                autoComplete="email"
                 required
               />
             </label>
@@ -74,8 +83,9 @@ function Register() {
               <input
                 type="password"
                 name="password"
+                value={formData.password}
                 onChange={handleInputChange}
-                autocomplete="new-password"
+                autoComplete="new-password"
                 required
               />
             </label>
