@@ -1,5 +1,6 @@
 import { Layout, Menu } from "antd";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 import {
   AppstoreOutlined,
   ShoppingOutlined,
@@ -16,6 +17,7 @@ const { Header, Footer, Sider, Content } = Layout;
 
 function AdminLayout({ children }) {
   const navigate = useNavigate();
+  const [currentLabel, setCurrentLabel] = useState("Dashboard");
   const items = [
     {
       key: "1",
@@ -23,6 +25,7 @@ function AdminLayout({ children }) {
       label: "DashBoard",
       path: "/admin",
       onClick: () => {
+        setCurrentLabel("Dashboard"); // Tıklanan menünün ismini güncelle
         navigate("/admin");
       },
     },
@@ -38,6 +41,7 @@ function AdminLayout({ children }) {
           label: "Category List",
           path: "/admin/categories/list",
           onClick: () => {
+            setCurrentLabel("Category List"); // Tıklanan menünün ismini güncelle
             navigate("/admin/categories/list");
           },
         },
@@ -45,8 +49,9 @@ function AdminLayout({ children }) {
           key: "2-2",
           icon: <PlusOutlined />,
           label: "Category Add",
-          path: "/admin/categories/creat",
+          path: "/admin/categories/create",
           onClick: () => {
+            setCurrentLabel("Category Add"); // Tıklanan menünün ismini güncelle
             navigate("/admin/categories/create");
           },
         },
@@ -64,6 +69,7 @@ function AdminLayout({ children }) {
           label: "Product List",
           path: "/admin/products/list",
           onClick: () => {
+            setCurrentLabel("Product List"); // Tıklanan menünün ismini güncelle
             navigate("/admin/products/list");
           },
         },
@@ -71,8 +77,9 @@ function AdminLayout({ children }) {
           key: "3-2",
           icon: <PlusOutlined />,
           label: "Product Add",
-          path: "/admin/products/creat",
+          path: "/admin/products/create",
           onClick: () => {
+            setCurrentLabel("Product Add"); // Tıklanan menünün ismini güncelle
             navigate("/admin/products/create");
           },
         },
@@ -90,6 +97,7 @@ function AdminLayout({ children }) {
           label: "User List",
           path: "/admin/users/list",
           onClick: () => {
+            setCurrentLabel("User List"); // Tıklanan menünün ismini güncelle
             navigate("/admin/users/list");
           },
         },
@@ -99,6 +107,7 @@ function AdminLayout({ children }) {
           label: "User Add",
           path: "/admin/users/create",
           onClick: () => {
+            setCurrentLabel("User Add"); // Tıklanan menünün ismini güncelle
             navigate("/admin/users/create");
           },
         },
@@ -116,6 +125,7 @@ function AdminLayout({ children }) {
           label: "Coupon List",
           path: "/admin/coupons/list",
           onClick: () => {
+            setCurrentLabel("Coupon List"); // Tıklanan menünün ismini güncelle
             navigate("/admin/coupons/list");
           },
         },
@@ -125,6 +135,7 @@ function AdminLayout({ children }) {
           label: "Coupon Add",
           path: "/admin/coupons/create",
           onClick: () => {
+            setCurrentLabel("Coupon Add"); // Tıklanan menünün ismini güncelle
             navigate("/admin/coupons/create");
           },
         },
@@ -139,8 +150,8 @@ function AdminLayout({ children }) {
             <Menu mode="inline" theme="dark" items={items} />
           </Sider>
           <Layout>
-            <Header style={{ color: "white" }}>Header</Header>
-            <Content style={{ padding: "30px" }}>{children}</Content>
+            <Header style={{ color: "white" }}>{currentLabel}</Header>
+            <Content style={{ width: "100%" }}>{children}</Content>
             <Footer style={{}}>Footer</Footer>
           </Layout>
         </Layout>

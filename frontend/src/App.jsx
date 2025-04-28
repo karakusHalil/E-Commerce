@@ -8,6 +8,7 @@ import AccountPage from "./pages/AccountPage";
 import SingleProductPage from "./pages/SingleProductPage";
 import SingleBlogPage from "./pages/SingleBlogPage";
 import ScrollToTop from "./components/scrollToTop/ScrollToTop";
+import CategoryList from "./pages/Admin/Categories/CategoryList";
 
 function App() {
   return (
@@ -22,6 +23,10 @@ function App() {
         <Route path="/account" element={<AccountPage />} />
         <Route path="/singleblog" element={<SingleBlogPage />} />
         <Route path="/singleproduct" element={<SingleProductPage />} />
+        <Route path="/admin/*">
+          <Route index element={<CategoryList />} />
+          <Route path="categories/list" element={<CategoryList />} />
+        </Route>
       </Routes>
     </>
   );
