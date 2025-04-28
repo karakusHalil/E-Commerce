@@ -151,7 +151,7 @@ function AdminLayout({ children }) {
           </Sider>
           <Layout>
             <Header style={{ color: "white" }}>{currentLabel}</Header>
-            <Content style={{ width: "100%" }}>{children}</Content>
+            <Content style={{ width: "95%", margin:"25px" }}>{children}</Content>
             <Footer style={{}}>Footer</Footer>
           </Layout>
         </Layout>
