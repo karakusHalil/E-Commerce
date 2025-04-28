@@ -21,11 +21,16 @@ function Register() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ formData }),
+        body: JSON.stringify(formData),
       });
-      console.log(response);
+      if (response.ok) {
+        const result = await response.json();
+        console.log(result);
+      } else {
+        console.log("Kullanıcı kayıt işlemi sırasında hata oluştu...");
+      }
     } catch (error) {
-      console.error(error);
+      console.error("Sunucu Hatası !", error);
     }
   };
   return (
