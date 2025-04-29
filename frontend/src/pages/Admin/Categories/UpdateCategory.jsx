@@ -1,5 +1,6 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { Button, Form, Input } from "antd";
+import { useEffect } from "react";
 
 function UpdateCategory() {
   const [form] = Form.useForm();
@@ -23,14 +24,16 @@ function UpdateCategory() {
             img: data.img,
             id: categoryId,
           });
-          console.log(form.getFieldsValue);
+          console.log(form.getFieldsValue());
         }
       }
     } catch (error) {
       console.log("Sunucu Hatası !", error);
     }
   };
-  getCategoryById();
+  useEffect(() => {
+    getCategoryById();
+  }, []);
 
   const handleCreateCategory = async (values) => {
     try {
