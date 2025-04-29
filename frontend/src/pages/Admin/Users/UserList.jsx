@@ -43,7 +43,7 @@ function UserList() {
           <Button
             color="cyan"
             variant="solid"
-            onClick={() => navigate(`/admin/categories/update/${record._id}`)}
+            onClick={() => navigate(`/admin/users/update/${record._id}`)}
             style={{ marginRight: "5px" }}
           >
             Update
