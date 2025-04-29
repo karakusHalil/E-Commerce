@@ -94,7 +94,11 @@ function CategoryList() {
   }, []);
   return (
     <>
-      <Table columns={columns} dataSource={dataList} onChange={onChange} />
+      <Table
+        columns={columns}
+        dataSource={dataList.map((item) => ({ ...item, key: item._id }))}
+        onChange={onChange}
+      />
     </>
   );
 }

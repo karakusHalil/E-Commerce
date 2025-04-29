@@ -29,7 +29,7 @@ function App() {
           <Route index element={<CategoryList />} />
           <Route path="categories/list" element={<CategoryList />} />
           <Route path="categories/create" element={<CreateCategory />} />
-          <Route path="categories/update" element={<UpdateCategory />} />
+          <Route path="categories/update/:id" element={<UpdateCategory />} />
         </Route>
       </Routes>
     </>

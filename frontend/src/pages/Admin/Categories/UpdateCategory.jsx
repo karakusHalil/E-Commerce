@@ -1,10 +1,36 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Button, Form, Input } from "antd";
 
 function UpdateCategory() {
   const [form] = Form.useForm();
   const formLayout = "vertical";
+  const params = useParams();
   const navigate = useNavigate();
+  const categoryId = params.id;
+
+  // console.log(categoryId);
+
+  const getCategoryById = async () => {
+    try {
+      const response = await fetch(
+        `http://localhost:5000/api/categories/${categoryId}`
+      );
+      if (response.ok) {
+        const data = await response.json();
+        if (data) {
+          form.setFieldsValue({
+            name: data.name,
+            img: data.img,
+            id: categoryId,
+          });
+          console.log(form.getFieldsValue);
+        }
+      }
+    } catch (error) {
+      console.log("Sunucu Hatası !", error);
+    }
+  };
+  getCategoryById();
 
   const handleCreateCategory = async (values) => {
     try {
