@@ -1,36 +1,47 @@
-import React, { useState } from "react";
-import { Button, Form, Input, Radio } from "antd";
+import { useNavigate } from "react-router-dom";
+import { Button, Form, Input } from "antd";
 
 function CreateCategory() {
   const [form] = Form.useForm();
-  const [formLayout, setFormLayout] = useState("horizontal");
-  const onFormLayoutChange = ({ layout }) => {
-    setFormLayout(layout);
+  const formLayout = "vertical";
+  const navigate = useNavigate();
+
+  const handleCreateCategory = async (values) => {
+    try {
+      const response = await fetch("http://localhost:5000/api/categories", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(values),
+      });
+      if (response.ok) {
+        console.log("Kategori başarıyla eklendi...");
+        navigate("/admin/categories/list");
+      } else {
+        console.log("Kategori oluşturulurken hata meydana geldi !");
+      }
+    } catch (error) {
+      console.log("Sunucu Hatası !", error);
+    }
   };
+
   return (
     <>
       <Form
         layout={formLayout}
         form={form}
         initialValues={{ layout: formLayout }}
-        onValuesChange={onFormLayoutChange}
-        style={{ maxWidth: formLayout === "inline" ? "none" : 600 }}
+        onFinish={handleCreateCategory}
       >
-        <Form.Item label="Form Layout" name="layout">
-          <Radio.Group value={formLayout}>
-            <Radio.Button value="horizontal">Horizontal</Radio.Button>
-            <Radio.Button value="vertical">Vertical</Radio.Button>
-            <Radio.Button value="inline">Inline</Radio.Button>
-          </Radio.Group>
+        <Form.Item label="Category Name" name="name">
+          <Input placeholder="Category name enter..." />
         </Form.Item>
-        <Form.Item label="Field A">
-          <Input placeholder="input placeholder" />
-        </Form.Item>
-        <Form.Item label="Field B">
-          <Input placeholder="input placeholder" />
+        <Form.Item label="Category Image" name="img">
+          <Input placeholder="Category Image enter..." />
         </Form.Item>
         <Form.Item>
-          <Button type="primary">Submit</Button>
+          <Button type="primary" htmlType="submit">
+            Create
+          </Button>
         </Form.Item>
       </Form>
     </>
