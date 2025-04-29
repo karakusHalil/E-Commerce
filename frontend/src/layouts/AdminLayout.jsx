@@ -153,11 +153,33 @@ function AdminLayout({ children }) {
     <>
       <div className="admin-layout">
         <Layout style={{ minHeight: "100vh" }}>
-          <Sider width="20%" style={{ color: "white" }}>
+          <Sider
+            width="20%"
+            style={{
+              color: "white",
+              position: "fixed",
+              height: "100vh",
+              overflow: "auto",
+              left: 0,
+              top: 0,
+              bottom: 0,
+            }}
+          >
             <Menu mode="inline" theme="dark" items={items} />
           </Sider>
-          <Layout>
-            <Header style={{ color: "white" }}>{getTitle()}</Header>
+          <Layout style={{ marginLeft: "20%" }}>
+            <Header
+              style={{
+                position: "fixed",
+                top: 0,
+                left: "20%", // Sider genişliğine göre ayarlıyoruz
+                width: "80%",
+                zIndex: 1,
+                color: "white",
+              }}
+            >
+              {getTitle()}
+            </Header>
             <Content style={{ width: "95%", margin: "25px" }}>
               {children}
             </Content>
