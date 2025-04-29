@@ -1,41 +1,60 @@
-import { Table } from "antd";
+import { message, Table } from "antd";
+import { useEffect, useState } from "react";
 
 function UserList() {
-  const dataSource = [
-    {
-      key: "1",
-      name: "Mike",
-      age: 32,
-      address: "10 Downing Street",
-    },
-    {
-      key: "2",
-      name: "John",
-      age: 42,
-      address: "10 Downing Street",
-    },
-  ];
+  const [dataSource, setDataSource] = useState([]);
 
   const columns = [
     {
-      title: "Name",
-      dataIndex: "name",
-      key: "name",
+      title: "UserName",
+      dataIndex: "username",
+      key: "username",
     },
     {
-      title: "Age",
-      dataIndex: "age",
-      key: "age",
+      title: "Email",
+      dataIndex: "email",
+      key: "email",
     },
     {
-      title: "Address",
-      dataIndex: "address",
-      key: "address",
+      title: "Role",
+      dataIndex: "role",
+      key: "role",
+      render: (role) => (
+        <span
+          style={{
+            color: "white",
+            padding: "5px 10px",
+            backgroundColor: role === "admin" ? "#ff4d4f" : "#91d5ff",
+            borderRadius: "5px",
+          }}
+        >
+          {role}
+        </span>
+      ),
     },
   ];
+
+  const getUsers = async () => {
+    try {
+      const response = await fetch("http://localhost:5000/api/users");
+      if (response.ok) {
+        const data = await response.json();
+        setDataSource(data);
+      } else {
+        message.error("Kullanıcıları getirirken hata oluştu !");
+      }
+    } catch (error) {
+      console.log("Sunucu Hatası !", error);
+    }
+  };
+
+  useEffect(() => {
+    getUsers();
+  }, []);
+
   return (
     <>
-      <Table dataSource={dataSource} columns={columns} />;
+      <Table dataSource={dataSource} columns={columns} />
     </>
   );
 }
