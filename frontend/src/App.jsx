@@ -10,6 +10,7 @@ import SingleBlogPage from "./pages/SingleBlogPage";
 import ScrollToTop from "./components/scrollToTop/ScrollToTop";
 import CategoryList from "./pages/Admin/Categories/CategoryList";
 import CreateCategory from "./pages/Admin/Categories/CreateCategory";
+import UpdateCategory from "./pages/Admin/Categories/UpdateCategory";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
           <Route index element={<CategoryList />} />
           <Route path="categories/list" element={<CategoryList />} />
           <Route path="categories/create" element={<CreateCategory />} />
+          <Route path="categories/update" element={<UpdateCategory />} />
         </Route>
       </Routes>
     </>
