@@ -12,6 +12,7 @@ import CategoryList from "./pages/Admin/Categories/CategoryList";
 import CreateCategory from "./pages/Admin/Categories/CreateCategory";
 import UpdateCategory from "./pages/Admin/Categories/UpdateCategory";
 import NotFound from "./pages/NotFound";
+import UserList from "./pages/Admin/Users/UserList";
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
           <Route path="categories/list" element={<CategoryList />} />
           <Route path="categories/create" element={<CreateCategory />} />
           <Route path="categories/update/:id" element={<UpdateCategory />} />
+          <Route path="users/list" element={<UserList />} />
         </Route>
         <Route path="*" element={<NotFound />} />
       </Routes>
