@@ -68,7 +68,7 @@ function UpdateCategory() {
         </Form.Item>
         <Form.Item>
           <Button type="primary" htmlType="submit">
-            Create
+            Update
           </Button>
         </Form.Item>
       </Form>
