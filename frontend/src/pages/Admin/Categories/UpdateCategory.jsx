@@ -54,7 +54,6 @@ function UpdateCategory() {
         }
       );
       if (response.ok) {
-        console.log("Kategori başarılı");
         setTimeout(() => {
           navigate("/admin/categories/list");
         }, 1200);

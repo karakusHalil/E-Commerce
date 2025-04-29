@@ -60,7 +60,7 @@ function CategoryList() {
         const data = await response.json();
         setDataList(data);
       } else {
-        console.log("Kategori getirirken sorun oluştu !");
+        message.error("Kategori getirirken sorun oluştu !");
       }
     } catch (error) {
       console.log("Sunucu Hatası !", error);
