@@ -11,6 +11,7 @@ import ScrollToTop from "./components/scrollToTop/ScrollToTop";
 import CategoryList from "./pages/Admin/Categories/CategoryList";
 import CreateCategory from "./pages/Admin/Categories/CreateCategory";
 import UpdateCategory from "./pages/Admin/Categories/UpdateCategory";
+import NotFound from "./pages/NotFound";
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
           <Route path="categories/create" element={<CreateCategory />} />
           <Route path="categories/update/:id" element={<UpdateCategory />} />
         </Route>
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </>
   );
