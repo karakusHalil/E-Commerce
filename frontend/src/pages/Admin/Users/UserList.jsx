@@ -1,8 +1,10 @@
-import { message, Table } from "antd";
+import { message, Table, Button } from "antd";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router";
 
 function UserList() {
   const [dataSource, setDataSource] = useState([]);
+  const navigate = useNavigate();
 
   const columns = [
     {
@@ -24,12 +26,32 @@ function UserList() {
           style={{
             color: "white",
             padding: "5px 10px",
-            backgroundColor: role === "admin" ? "#ff4d4f" : "#91d5ff",
+            backgroundColor: role === "admin" ? "#FFCC00" : "#91d5ff",
             borderRadius: "5px",
           }}
         >
           {role}
         </span>
+      ),
+    },
+    {
+      title: "Process",
+      key: "process",
+      width: "25%",
+      render: (record) => (
+        <>
+          <Button
+            color="cyan"
+            variant="solid"
+            onClick={() => navigate(`/admin/categories/update/${record._id}`)}
+            style={{ marginRight: "5px" }}
+          >
+            Update
+          </Button>
+          <Button color="danger" variant="solid" onClick={() => {}}>
+            Delete
+          </Button>
+        </>
       ),
     },
   ];
