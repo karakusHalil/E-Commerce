@@ -180,7 +180,7 @@ function AdminLayout({ children }) {
             >
               {getTitle()}
             </Header>
-            <Content style={{ width: "95%", margin: "25px" }}>
+            <Content style={{ width: "95%", margin: "25px", paddingTop : "64px"}}>
               {children}
             </Content>
             <Footer style={{}}>Footer</Footer>
