@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 
 function UserList() {
-  const [dataSource, setDataSource] = useState([]);
+  const [dataList, setDataList] = useState([]);
   const navigate = useNavigate();
 
   const columns = [
@@ -48,7 +48,11 @@ function UserList() {
           >
             Update
           </Button>
-          <Button color="danger" variant="solid" onClick={() => {}}>
+          <Button
+            color="danger"
+            variant="solid"
+            onClick={() => deleteUsers(record._id)}
+          >
             Delete
           </Button>
         </>
@@ -61,9 +65,31 @@ function UserList() {
       const response = await fetch("http://localhost:5000/api/users");
       if (response.ok) {
         const data = await response.json();
-        setDataSource(data);
+        setDataList(data);
       } else {
         message.error("Kullanıcıları getirirken hata oluştu !");
+      }
+    } catch (error) {
+      console.log("Sunucu Hatası !", error);
+    }
+  };
+
+  const deleteUsers = async (userId) => {
+    try {
+      const response = await fetch(
+        `http://localhost:5000/api/users/${userId}`,
+        {
+          method: "DELETE",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ _id: userId }),
+        }
+      );
+      if (response.ok) {
+        message.success("Kullanıcı Başarıyla Silindi");
+        await getUsers();
+        navigate("/admin/users/list");
+      } else {
+        message.error("Kullanıcı Silme İşlemi Başarısız !");
       }
     } catch (error) {
       console.log("Sunucu Hatası !", error);
@@ -76,7 +102,10 @@ function UserList() {
 
   return (
     <>
-      <Table dataSource={dataSource} columns={columns} />
+      <Table
+        dataSource={dataList.map((item) => ({ ...item, key: item._id }))}
+        columns={columns}
+      />
     </>
   );
 }
