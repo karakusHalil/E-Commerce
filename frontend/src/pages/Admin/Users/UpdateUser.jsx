@@ -45,7 +45,7 @@ function UpdateUser() {
 
     // Email ve Username'in daha önce kullanılıp kullanılmadığını kontrol et
     const userCheckResponse = await fetch(
-      `http://localhost:5000/api/users/check?email=${values.email}&username=${values.username}`
+      `http://localhost:5000/api/users/check?email=${values.email}&username=${values.username}&userId=${userId}`
     );
 
     if (!userCheckResponse.ok) {

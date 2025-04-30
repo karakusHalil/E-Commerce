@@ -6,7 +6,6 @@ function CreateUser() {
   const formLayout = "vertical";
   const navigate = useNavigate();
 
-
   const handleCreateUser = async (values) => {
     // Boş alanları kontrol et
     if (!values.username || !values.email || !values.password) {
@@ -15,7 +14,6 @@ function CreateUser() {
       );
       return;
     }
-
     // Email ve Username'in daha önce kullanılıp kullanılmadığını kontrol et
     const userCheckResponse = await fetch(
       `http://localhost:5000/api/users/check?email=${values.email}&username=${values.username}`
@@ -29,6 +27,7 @@ function CreateUser() {
       );
       return; // Hata varsa kullanıcı eklenemez
     }
+
     try {
       const response = await fetch("http://localhost:5000/api/users", {
         method: "POST",
@@ -47,7 +46,6 @@ function CreateUser() {
   };
   return (
     <>
-      
       <Form
         layout={formLayout}
         form={form}
