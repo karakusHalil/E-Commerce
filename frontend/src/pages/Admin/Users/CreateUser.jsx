@@ -1,41 +1,14 @@
-import { Button, Form, Input, message, Radio, Select } from "antd";
-import { useEffect } from "react";
-import { useParams, useNavigate } from "react-router";
+import { Button, Form, Input, message, Select } from "antd";
+import { useNavigate } from "react-router";
 
-function UpdateUser() {
+function CreateUser() {
   const [form] = Form.useForm();
   const formLayout = "vertical";
-
-  const params = useParams();
   const navigate = useNavigate();
-  const userId = params.id;
-  //   console.log(userId);
 
-  const getUserById = async () => {
-    try {
-      const response = await fetch(`http://localhost:5000/api/users/${userId}`);
-      console.log(response);
-      if (response.ok) {
-        const data = await response.json();
-        if (data) {
-          form.setFieldsValue({
-            username: data.username,
-            email: data.email,
-            role: data.role,
-          });
-          console.log(form.getFieldsValue());
-        }
-      }
-    } catch (error) {
-      console.log("Sunucu Hatası !", error);
-    }
-  };
 
-  useEffect(() => {
-    getUserById();
-  }, []);
-
-  const handleUpdateUsers = async (values) => {
+  const handleCreateUser = async (values) => {
+    // Boş alanları kontrol et
     if (!values.username || !values.email || !values.password) {
       message.warning(
         "Kullanıcı adı, e-posta ve şifre alanları boş bırakılamaz."
@@ -54,36 +27,32 @@ function UpdateUser() {
         userCheckError.error ||
           "Bu e-posta ya da kullanıcı adı zaten kullanılıyor."
       );
-      return; // Hata varsa güncelleme işlemi yapılmaz
+      return; // Hata varsa kullanıcı eklenemez
     }
     try {
-      const response = await fetch(
-        `http://localhost:5000/api/users/${userId}`,
-        {
-          method: "PUT",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(values),
-        }
-      );
+      const response = await fetch("http://localhost:5000/api/users", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(values),
+      });
       if (response.ok) {
-        setTimeout(() => {
-          navigate("/admin/users/list");
-        }, 1000);
+        message.success("Kullanıcı Ekleme Başarılı");
+        navigate("/admin/users/list");
       } else {
-        message.error("Kullanıcı güncelleme işlemi başarısız !");
+        message.error("Kullanıcı Oluştururken Hata Meydana Geldi !");
       }
     } catch (error) {
       console.log("Sunucu Hatası !", error);
     }
   };
-
   return (
     <>
+      
       <Form
         layout={formLayout}
         form={form}
         initialValues={{ layout: formLayout }}
-        onFinish={handleUpdateUsers}
+        onFinish={handleCreateUser}
       >
         <Form.Item label="Name" name="username">
           <Input placeholder="User name enter..." />
@@ -106,7 +75,7 @@ function UpdateUser() {
         </Form.Item>
         <Form.Item>
           <Button type="primary" htmlType="submit">
-            Update
+            Create
           </Button>
         </Form.Item>
       </Form>
@@ -114,4 +83,4 @@ function UpdateUser() {
   );
 }
 
-export default UpdateUser;
+export default CreateUser;
