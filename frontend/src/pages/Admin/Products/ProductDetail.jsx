@@ -9,6 +9,7 @@ import {
   Popconfirm,
   Space,
   Typography,
+  Spin,
 } from "antd";
 import {
   UploadOutlined,
@@ -105,27 +106,66 @@ const ProductDetail = () => {
     }
   };
 
-  if (!product) return <p>Yükleniyor...</p>;
+  if (loading || !product)
+    return (
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          marginTop: "250px",
+        }}
+      >
+        <Spin tip="Yükleniyor..." size="large" />
+      </div>
+    );
 
   return (
-    <Card title={product.name} style={{ margin: 24 }}>
+    <Card
+      title={product.name}
+      style={{
+        margin: 24,
+        borderRadius: "10px",
+        boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
+        backgroundColor: "#f9f9f9",
+      }}
+    >
       <Space direction="vertical" style={{ width: "100%" }}>
+        {/* Fotoğraf Yükle */}
         <Upload
           beforeUpload={handleImageUpload}
           showUploadList={false}
           accept="image/*"
+          style={{ marginBottom: "20px" }}
         >
-          <Button icon={<UploadOutlined />}>Fotoğraf Yükle</Button>
+          <Button
+            icon={<UploadOutlined />}
+            style={{ width: "200px", marginBottom: "16px" }}
+          >
+            Fotoğraf Yükle
+          </Button>
         </Upload>
-        <div style={{ display: "flex", flexWrap: "wrap", gap: "10px" }}>
+
+        {/* Fotoğraf Listesi */}
+        <div style={{ display: "flex", flexWrap: "wrap", gap: "15px" }}>
           {product.images?.map((img, index) => (
-            <div key={index} style={{ position: "relative" }}>
+            <div
+              key={index}
+              style={{
+                position: "relative",
+                borderRadius: "8px",
+                overflow: "hidden",
+                boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+              }}
+            >
               <Image
                 src={`/${img}`}
                 alt={`Foto ${index + 1}`}
                 width={150}
                 height={200}
-                style={{ objectFit: "cover" }}
+                style={{
+                  objectFit: "cover",
+                  borderRadius: "8px",
+                }}
               />
               <Popconfirm
                 title="Bu fotoğraf silinsin mi?"
@@ -136,34 +176,82 @@ const ProductDetail = () => {
                 <Button
                   icon={<DeleteOutlined />}
                   danger
-                  style={{ position: "absolute", top: 5, right: 5 }}
+                  style={{
+                    position: "absolute",
+                    top: 5,
+                    right: 5,
+                    backgroundColor: "rgba(255, 0, 0, 0.7)",
+                    borderRadius: "50%",
+                    padding: "5px",
+                    color: "#fff",
+                  }}
                 />
               </Popconfirm>
             </div>
           ))}
         </div>
-        <Text strong>Fiyat:</Text> <Text>{product.price}₺</Text>
-        <Text strong>Stok:</Text> <Text>{product.stock}</Text>
-        <Text strong>İndirim:</Text> <Text>{product.discount * 100}%</Text>
-        <Text strong>Açıklama:</Text> <Text>{product.description}</Text>
-        <Text strong>Renkler:</Text> <Text>{product.colors?.join(", ")}</Text>
-        <Text strong>Bedenler:</Text> <Text>{product.sizes?.join(", ")}</Text>
-        <Text strong>Stok Kodu:</Text> <Text>{product.stockCode}</Text>
-        <Text strong>Oluşturulma:</Text>{" "}
-        <Text>{new Date(product.createdAt).toLocaleString()}</Text>
-        <Text strong>Güncellenme:</Text>{" "}
-        <Text>{new Date(product.updatedAt).toLocaleString()}</Text>
+
+        {/* Ürün Bilgileri */}
+        <div style={{ marginTop: "20px" }}>
+          <Text strong>Fiyat:</Text> <Text>{product.price}₺</Text>
+        </div>
+        <div>
+          <Text strong>Stok:</Text> <Text>{product.stock}</Text>
+        </div>
+        <div>
+          <Text strong>İndirim:</Text> <Text>{product.discount * 100}%</Text>
+        </div>
+        <div>
+          <Text strong>Açıklama:</Text> <Text>{product.description}</Text>
+        </div>
+        <div>
+          <Text strong>Renkler:</Text> <Text>{product.colors?.join(", ")}</Text>
+        </div>
+        <div>
+          <Text strong>Bedenler:</Text> <Text>{product.sizes?.join(", ")}</Text>
+        </div>
+        <div>
+          <Text strong>Stok Kodu:</Text> <Text>{product.stockCode}</Text>
+        </div>
+        <div>
+          <Text strong>Oluşturulma:</Text>{" "}
+          <Text>{new Date(product.createdAt).toLocaleString()}</Text>
+        </div>
+        <div>
+          <Text strong>Güncellenme:</Text>{" "}
+          <Text>{new Date(product.updatedAt).toLocaleString()}</Text>
+        </div>
+
+        {/* Güncelleme ve Silme Butonları */}
         <Space>
-          <Button type="primary" icon={<EditOutlined />} onClick={handleUpdate}>
+          <Button
+            type="primary"
+            icon={<EditOutlined />}
+            onClick={handleUpdate}
+            style={{
+              width: "120px",
+              borderRadius: "8px",
+              fontWeight: "bold",
+            }}
+          >
             Güncelle
           </Button>
+
           <Popconfirm
             title="Bu ürünü silmek istediğinizden emin misiniz?"
             onConfirm={handleDelete}
             okText="Evet"
             cancelText="Hayır"
           >
-            <Button danger icon={<DeleteOutlined />}>
+            <Button
+              danger
+              icon={<DeleteOutlined />}
+              style={{
+                width: "120px",
+                borderRadius: "8px",
+                fontWeight: "bold",
+              }}
+            >
               Sil
             </Button>
           </Popconfirm>
