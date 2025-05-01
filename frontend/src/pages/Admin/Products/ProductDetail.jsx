@@ -1,5 +1,6 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
+
 import {
   Card,
   Image,
@@ -147,48 +148,76 @@ const ProductDetail = () => {
 
         {/* Fotoğraf Listesi */}
         <div style={{ display: "flex", flexWrap: "wrap", gap: "15px" }}>
-          {product.images?.map((img, index) => (
+          {product.images?.length > 0 ? (
+            product.images?.map((img, index) => (
+              <div
+                key={index}
+                style={{
+                  position: "relative",
+                  borderRadius: "8px",
+                  overflow: "hidden",
+                  boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+                }}
+              >
+                <Image
+                  src={`/${img}`}
+                  alt={`Foto ${index + 1}`}
+                  width={150}
+                  height={200}
+                  style={{
+                    objectFit: "cover",
+                    borderRadius: "8px",
+                  }}
+                />
+                <Popconfirm
+                  title="Bu fotoğraf silinsin mi?"
+                  onConfirm={() => handleImageDelete(img)}
+                  okText="Evet"
+                  cancelText="Hayır"
+                >
+                  <Button
+                    icon={<DeleteOutlined />}
+                    danger
+                    style={{
+                      position: "absolute",
+                      top: 5,
+                      right: 5,
+                      backgroundColor: "rgba(255, 0, 0, 0.7)",
+                      borderRadius: "50%",
+                      padding: "5px",
+                      color: "#fff",
+                    }}
+                  />
+                </Popconfirm>
+              </div>
+            ))
+          ) : (
             <div
-              key={index}
               style={{
                 position: "relative",
+                width: "150px",
+                height: "200px",
                 borderRadius: "8px",
                 overflow: "hidden",
                 boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                backgroundColor: "#f0f0f0",
               }}
             >
               <Image
-                src={`/${img}`}
-                alt={`Foto ${index + 1}`}
+                src="/img/no-image/image.png"
+                alt="Fotoğraf Yok"
                 width={150}
                 height={200}
                 style={{
-                  objectFit: "cover",
+                  objectFit: "contain",
                   borderRadius: "8px",
                 }}
               />
-              <Popconfirm
-                title="Bu fotoğraf silinsin mi?"
-                onConfirm={() => handleImageDelete(img)}
-                okText="Evet"
-                cancelText="Hayır"
-              >
-                <Button
-                  icon={<DeleteOutlined />}
-                  danger
-                  style={{
-                    position: "absolute",
-                    top: 5,
-                    right: 5,
-                    backgroundColor: "rgba(255, 0, 0, 0.7)",
-                    borderRadius: "50%",
-                    padding: "5px",
-                    color: "#fff",
-                  }}
-                />
-              </Popconfirm>
             </div>
-          ))}
+          )}
         </div>
 
         {/* Ürün Bilgileri */}
