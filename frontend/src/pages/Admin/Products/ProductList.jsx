@@ -1,4 +1,4 @@
-import { Table, Tooltip } from "antd";
+import { Table, Tooltip, Button, message } from "antd";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 
@@ -33,6 +33,28 @@ function ProductList() {
     }
   };
 
+  const deleteProduct = async (productId) => {
+    try {
+      const response = await fetch(
+        `http://localhost:5000/api/products/${productId}`,
+        {
+          method: "DELETE",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ _id: productId }),
+        }
+      );
+      if (response.ok) {
+        message.success("Ürün Başarıyla Silindi.");
+        await getProducts();
+        navigate("/admin/products/list");
+      } else {
+        message.error("Ürün Silme İşlemi Başarısız !");
+      }
+    } catch (error) {
+      console.log("Sunucu Hatası !", error);
+    }
+  };
+
   useEffect(() => {
     getProducts();
     console.log(products);
@@ -57,7 +79,7 @@ function ProductList() {
             padding: "1px",
             backgroundColor: "#fff",
           }}
-          onClick={()=>navigate(`/admin/products/detail/${record._id}`)}
+          onClick={() => navigate(`/admin/products/detail/${record._id}`)}
         />
       ),
     },
@@ -135,6 +157,33 @@ function ProductList() {
       title: "Description",
       dataIndex: "description",
       key: "description",
+    },
+    {
+      title: "Process",
+      key: "process",
+      width: "15%",
+      render: (record) => (
+        <>
+          <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+            <Button
+              color="cyan"
+              variant="solid"
+              onClick={() => navigate(`/admin/users/update/${record._id}`)}
+              style={{ height: "32px", width: "120px" }}
+            >
+              Update
+            </Button>
+            <Button
+              color="danger"
+              variant="solid"
+              onClick={() => deleteProduct(record._id)}
+              style={{ height: "32px", width: "120px" }}
+            >
+              Delete
+            </Button>
+          </div>
+        </>
+      ),
     },
   ];
 
