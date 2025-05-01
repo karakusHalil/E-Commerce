@@ -6,14 +6,6 @@ function CreateCategory() {
   const formLayout = "vertical";
   const navigate = useNavigate();
 
-  const [messageApi, contextHolder] = message.useMessage();
-  const success = () => {
-    messageApi.open({
-      type: "success",
-      content: "Kategori Başarıyla Eklendi",
-    });
-  };
-
   const handleCreateCategory = async (values) => {
     try {
       const response = await fetch("http://localhost:5000/api/categories", {
@@ -34,21 +26,24 @@ function CreateCategory() {
 
   return (
     <>
-      {contextHolder}
       <Form
         layout={formLayout}
         form={form}
         initialValues={{ layout: formLayout }}
         onFinish={handleCreateCategory}
       >
-        <Form.Item label="Category Name" name="name">
+        <Form.Item
+          label="Category Name"
+          name="name"
+          rules={[{ required: true, message: "Kategori ismi giriniz !" }]}
+        >
           <Input placeholder="Category name enter..." />
         </Form.Item>
         <Form.Item label="Category Image" name="img">
           <Input placeholder="Category Image enter..." />
         </Form.Item>
         <Form.Item>
-          <Button type="primary" htmlType="submit" onClick={success}>
+          <Button type="primary" htmlType="submit">
             Create
           </Button>
         </Form.Item>
