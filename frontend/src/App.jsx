@@ -17,6 +17,7 @@ import UpdateUser from "./pages/Admin/Users/UpdateUser";
 import CreateUser from "./pages/Admin/Users/CreateUser";
 import ProductList from "./pages/Admin/Products/ProductList";
 import ProductDetail from "./pages/Admin/Products/ProductDetail";
+import CreateProduct from "./pages/Admin/Products/CreateProduct";
 
 function App() {
   return (
@@ -41,6 +42,7 @@ function App() {
           <Route path="users/create" element={<CreateUser />} />
           <Route path="products/list" element={<ProductList />} />
           <Route path="products/detail/:id" element={<ProductDetail />} />
+          <Route path="products/create" element={<CreateProduct />} />
         </Route>
         <Route path="*" element={<NotFound />} />
       </Routes>
