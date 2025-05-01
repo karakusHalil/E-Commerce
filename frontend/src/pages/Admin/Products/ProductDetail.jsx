@@ -32,7 +32,7 @@ const ProductDetail = () => {
       const data = await res.json();
       setProduct(data);
     } catch (error) {
-      message.error("Ürün detayları alınamadı.");
+      message.error("Ürün detayları alınamadı.",error);
     }
   };
 
@@ -68,7 +68,7 @@ const ProductDetail = () => {
       message.success("Fotoğraf yüklendi.");
       fetchProduct();
     } catch (error) {
-      message.error("Fotoğraf yüklenemedi.");
+      message.error("Fotoğraf yüklenemedi.",error);
     }
     return false;
   };
@@ -86,7 +86,7 @@ const ProductDetail = () => {
       message.success("Fotoğraf silindi.");
       fetchProduct();
     } catch (error) {
-      message.error("Fotoğraf silinemedi.");
+      message.error("Fotoğraf silinemedi.",error);
     }
   };
 
@@ -103,7 +103,7 @@ const ProductDetail = () => {
       message.success("Ürün silindi.");
       navigate("/admin/products/list");
     } catch (error) {
-      message.error("Ürün silinemedi.");
+      message.error("Ürün silinemedi.",error);
     }
   };
 
