@@ -57,6 +57,7 @@ function ProductList() {
             padding: "1px",
             backgroundColor: "#fff",
           }}
+          onClick={()=>navigate(`/admin/products/detail/${record._id}`)}
         />
       ),
     },
