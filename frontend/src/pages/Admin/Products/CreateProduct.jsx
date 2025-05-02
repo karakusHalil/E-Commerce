@@ -52,8 +52,10 @@ function CreateProduct() {
           layout: formLayout,
           colors: ["Black", "White"],
           sizes: ["S", "M", "L"],
+          price: 0,
+          discount: 0,
+          stock: 0,
         }}
-        // onFinish={{}}
       >
         <Form.Item
           label="Product Name"
@@ -93,27 +95,14 @@ function CreateProduct() {
             min={0}
             step={0.01}
             max={100000}
-            defaultValue={0}
           />
         </Form.Item>
 
         <Form.Item label="Discount" name="discount">
-          <InputNumber
-            placeholder="Enter..."
-            min={0}
-            step={0.01}
-            max={100}
-            defaultValue={0}
-          />
+          <InputNumber placeholder="Enter..." min={0} step={0.01} max={100} />
         </Form.Item>
         <Form.Item label="Stock" name="stock">
-          <InputNumber
-            placeholder="Enter..."
-            min={0}
-            step={1}
-            max={100000}
-            defaultValue={0}
-          />
+          <InputNumber placeholder="Enter..." min={0} step={1} max={100000} />
         </Form.Item>
         <Form.Item
           label="Colors"
