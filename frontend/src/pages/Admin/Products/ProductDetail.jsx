@@ -1,6 +1,5 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-
 import {
   Card,
   Image,
@@ -27,28 +26,19 @@ const ProductDetail = () => {
   const [loading, setLoading] = useState(false);
 
   const fetchProduct = async () => {
+    setLoading(true);
     try {
       const res = await fetch(`http://localhost:5000/api/products/${id}`);
       const data = await res.json();
       setProduct(data);
     } catch (error) {
-      message.error("Ürün detayları alınamadı.",error);
+      message.error("Ürün detayları alınamadı.");
+    } finally {
+      setLoading(false);
     }
   };
 
   useEffect(() => {
-    const fetchProduct = async () => {
-      setLoading(true);
-      try {
-        const res = await fetch(`http://localhost:5000/api/products/${id}`);
-        const data = await res.json();
-        setProduct(data);
-      } catch (error) {
-        console.log("Detay getirme hatası:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
     fetchProduct();
   }, [id]);
 
@@ -66,11 +56,11 @@ const ProductDetail = () => {
       );
       if (!res.ok) throw new Error("Yükleme hatası");
       message.success("Fotoğraf yüklendi.");
-      fetchProduct();
+      fetchProduct();  // Yeniden ürün bilgilerini çek
     } catch (error) {
-      message.error("Fotoğraf yüklenemedi.",error);
+      message.error("Fotoğraf yüklenemedi.");
     }
-    return false;
+    return false;  // Upload işlemi tamamlanınca, varsayılan davranışı engellemek için
   };
 
   const handleImageDelete = async (imgToDelete) => {
@@ -84,9 +74,9 @@ const ProductDetail = () => {
       });
       if (!res.ok) throw new Error("Silme hatası");
       message.success("Fotoğraf silindi.");
-      fetchProduct();
+      fetchProduct();  // Fotoğraf silindikten sonra güncel ürünü tekrar al
     } catch (error) {
-      message.error("Fotoğraf silinemedi.",error);
+      message.error("Fotoğraf silinemedi.");
     }
   };
 
@@ -103,7 +93,7 @@ const ProductDetail = () => {
       message.success("Ürün silindi.");
       navigate("/admin/products/list");
     } catch (error) {
-      message.error("Ürün silinemedi.",error);
+      message.error("Ürün silinemedi.");
     }
   };
 
