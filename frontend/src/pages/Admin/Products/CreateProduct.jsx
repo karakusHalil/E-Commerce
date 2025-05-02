@@ -1,8 +1,18 @@
-import { Button, Checkbox, Form, Input, InputNumber } from "antd";
+import {
+  Button,
+  Checkbox,
+  Form,
+  Input,
+  InputNumber,
+  message,
+  Select,
+} from "antd";
+import { useEffect, useState } from "react";
 
 function CreateProduct() {
   const [form] = Form.useForm();
   const formLayout = "vertical";
+  const [categories, setCategories] = useState([]);
   const colorOptions = [
     "Black",
     "White",
@@ -13,6 +23,26 @@ function CreateProduct() {
     "Pink",
   ];
   const sizeOptions = ["XS", "S", "M", "L", "XL", "XXL"];
+
+  const getCategories = async () => {
+    try {
+      const response = await fetch("http://localhost:5000/api/categories");
+      if (response.ok) {
+        const data = await response.json();
+        setCategories(data);
+      } else {
+        message.error("Kategori getirirken bir hata meydana geldi !");
+      }
+    } catch (error) {
+      console.log("Sunucu Hatası !", error);
+    }
+  };
+
+  useEffect(() => {
+    getCategories();
+    console.log(categories);
+  }, []);
+
   return (
     <>
       <Form
@@ -66,15 +96,7 @@ function CreateProduct() {
             defaultValue={0}
           />
         </Form.Item>
-        <Form.Item label="Discount" name="discount">
-          <InputNumber
-            placeholder="Enter..."
-            min={0}
-            step={0.01}
-            max={100}
-            defaultValue={0}
-          />
-        </Form.Item>
+
         <Form.Item label="Discount" name="discount">
           <InputNumber
             placeholder="Enter..."
@@ -106,6 +128,19 @@ function CreateProduct() {
           rules={[{ required: true, message: "Lütfen beden seçiniz !" }]}
         >
           <Checkbox.Group options={sizeOptions} />
+        </Form.Item>
+        <Form.Item
+          label="Categories"
+          name="category"
+          rules={[{ required: true, message: "Lütfen kategori seçiniz !" }]}
+        >
+          <Select placeholder="Select a category...">
+            {categories.map((category) => (
+              <Select.Option key={category._id} value={category._id}>
+                {category.name}
+              </Select.Option>
+            ))}
+          </Select>
         </Form.Item>
         <Form.Item>
           <Button type="primary" htmlType="submit">
