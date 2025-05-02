@@ -38,9 +38,36 @@ function CreateProduct() {
     }
   };
 
+  const addProduct = async (values) => {
+    const { colors, sizes, ...restValue } = values;
+    const imageLinks = values.images.split("\n").map((link) => link.trim());
+    console.log("boş", colors, sizes, imageLinks);
+    try {
+      const response = await fetch("http://localhost:5000/api/products", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          ...values,
+          images: imageLinks,
+          colors,
+          sizes,
+        }),
+      });
+      if (response.ok) {
+        message.success("Ürün Başarıyla Oluşturuldu");
+        form.resetFields();
+        console.log(restValue);
+        console.log(values);
+      } else {
+        message.error("Ürün Oluşturulurken Hata Meydana Geldi !");
+      }
+    } catch (error) {
+      console.log("Sunucu Hatası !", error);
+    }
+  };
+
   useEffect(() => {
     getCategories();
-    console.log(categories);
   }, []);
 
   return (
@@ -56,6 +83,7 @@ function CreateProduct() {
           discount: 0,
           stock: 0,
         }}
+        onFinish={addProduct}
       >
         <Form.Item
           label="Product Name"
