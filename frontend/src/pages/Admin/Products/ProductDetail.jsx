@@ -32,7 +32,7 @@ const ProductDetail = () => {
       const data = await res.json();
       setProduct(data);
     } catch (error) {
-      message.error("Ürün detayları alınamadı.");
+      message.error("Ürün detayları alınamadı.", error);
     } finally {
       setLoading(false);
     }
@@ -56,11 +56,11 @@ const ProductDetail = () => {
       );
       if (!res.ok) throw new Error("Yükleme hatası");
       message.success("Fotoğraf yüklendi.");
-      fetchProduct();  // Yeniden ürün bilgilerini çek
+      fetchProduct(); // Yeniden ürün bilgilerini çek
     } catch (error) {
-      message.error("Fotoğraf yüklenemedi.");
+      message.error("Fotoğraf yüklenemedi.", error);
     }
-    return false;  // Upload işlemi tamamlanınca, varsayılan davranışı engellemek için
+    return false; // Upload işlemi tamamlanınca, varsayılan davranışı engellemek için
   };
 
   const handleImageDelete = async (imgToDelete) => {
@@ -74,9 +74,9 @@ const ProductDetail = () => {
       });
       if (!res.ok) throw new Error("Silme hatası");
       message.success("Fotoğraf silindi.");
-      fetchProduct();  // Fotoğraf silindikten sonra güncel ürünü tekrar al
+      fetchProduct(); // Fotoğraf silindikten sonra güncel ürünü tekrar al
     } catch (error) {
-      message.error("Fotoğraf silinemedi.");
+      message.error("Fotoğraf silinemedi.", error);
     }
   };
 
@@ -93,7 +93,7 @@ const ProductDetail = () => {
       message.success("Ürün silindi.");
       navigate("/admin/products/list");
     } catch (error) {
-      message.error("Ürün silinemedi.");
+      message.error("Ürün silinemedi.", error);
     }
   };
 
