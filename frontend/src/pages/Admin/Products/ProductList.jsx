@@ -57,7 +57,6 @@ function ProductList() {
 
   useEffect(() => {
     getProducts();
-    console.log(products);
   }, []);
 
   const columns = [
